@@ -14,4 +14,20 @@ async function getCountryData(setData, setErrorMessage) {
 	}
 }
 
-export { getCountryData }
+async function getJoke(setData, setErrorMessage) {
+	const url = 'https://api.chucknorris.io/jokes/random'
+	try {
+		const response = await fetch(url)
+		const data = await response.json()
+		console.log('api.getJoke: ', data)
+
+		// Eftersom vi bara är intresserade av "value" i objektet:
+		setData(data.value)
+
+	} catch(error) {
+		setErrorMessage('Något gick fel! Försök igen senare...')
+	}
+}
+
+
+export { getCountryData, getJoke }
