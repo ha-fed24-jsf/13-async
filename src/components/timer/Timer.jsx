@@ -7,7 +7,9 @@ const Timer = () => {
 	const [isRunning, setIsRunning] = useState(false)
 
 	const handleStart = () => {
+		// Starta tidtagningen
 		const id = setInterval( () => {
+			// OBS! Använd inte den vanliga versionen av "set" - fungerar inte eftersom detta är en CLOSURE
 			setTime(t => t + 1)
 			console.log('Timer: Interval')
 		}, 1000 )
@@ -15,6 +17,7 @@ const Timer = () => {
 		setIsRunning(true)
 	}
 	const handleStop = () => {
+		// Stoppa tidtagningen
 		clearInterval(intervalId)
 		setIntervalId(null)
 		setIsRunning(false)
